@@ -20,7 +20,7 @@ def bfs():
             if 0 <= nx <=100000 and visited[nx] == 0 :
                 visited[nx] = visited[x]+1
                 q.append(nx)
-                
+    return 
 
 print(bfs())
 
