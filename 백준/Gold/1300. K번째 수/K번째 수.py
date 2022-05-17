@@ -16,9 +16,8 @@ while start <= end:
         cnt += min(mid//i, n)  # n x n 에서 mid 보다 작거나 같은 수
     
     if cnt >= k: # k 번째로 오는 수를 찾는다 
-        answer = mid
         end = mid - 1
     else:
         start = mid + 1
 
-print(answer)
+print(start)
