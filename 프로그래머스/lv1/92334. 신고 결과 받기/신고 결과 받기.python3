@@ -3,7 +3,7 @@ def solution(id_list, report, k):
     
     report = set(report)
     
-    dict = { name: [] for name in id_list }
+    dict = {name:[] for name in id_list}
     
     for r in report : 
         a,b = r.split(' ')
