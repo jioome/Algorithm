@@ -1,0 +1,19 @@
+def solution(clothes):
+    answer = 1
+    closet = {}
+    for c in clothes:
+        key = c[1]
+        value = c[0]
+        if key in closet : 
+            closet[key].append(value)
+        else : 
+            closet[key] = [value]
+    
+
+    for key in closet.keys():
+        answer *= len(closet[key])+1
+        
+    answer -= 1
+        
+        
+    return answer
