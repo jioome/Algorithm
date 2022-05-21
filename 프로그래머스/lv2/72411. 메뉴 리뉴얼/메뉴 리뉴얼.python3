@@ -1,0 +1,16 @@
+from  itertools import combinations
+from collections import Counter
+
+def solution(orders, course):
+    answer = []
+    for k in course:
+        candidate = [] 
+        for menu in orders : 
+            for li in combinations(menu,k):
+                res = ''.join(sorted(li))
+                candidate.append(res)
+        sorted_candidate = Counter(candidate).most_common()
+        print(sorted_candidate)
+        answer += [menu for menu, cnt in sorted_candidate if cnt > 1 and cnt ==  sorted_candidate[0][1]]
+
+    return sorted(answer)
