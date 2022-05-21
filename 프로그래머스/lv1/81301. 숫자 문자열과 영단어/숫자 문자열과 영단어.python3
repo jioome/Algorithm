@@ -1,0 +1,9 @@
+def solution(s):
+
+
+    numEng = ['zero','one','two','three','four','five','six','seven','eight','nine']
+
+    for i in range(len(numEng)):
+        s = s.replace(numEng[i],str(i))
+    answer = int(s)
+    return answer
