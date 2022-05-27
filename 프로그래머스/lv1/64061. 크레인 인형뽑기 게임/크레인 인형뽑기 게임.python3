@@ -1,0 +1,18 @@
+def solution(board, moves):
+    answer = 0 
+    result = [] 
+    for m in moves : 
+        m = m-1
+
+        for i in range(len(board)):
+            if board[i][m]!= 0 :
+                result.append(board[i][m])
+                board[i][m] = 0 
+                
+                if len(result) >=2 and  result[-1] == result[-2]: 
+                    result.pop()
+                    result.pop()
+                    answer += 2
+                break
+
+    return answer
