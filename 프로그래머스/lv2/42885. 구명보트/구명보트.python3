@@ -1,0 +1,20 @@
+from collections import deque
+
+def solution(people, limit):
+
+    people.sort()
+    q = deque(people)
+    result = 0
+    while len(q) >= 2  :
+        if q[-1] + q[0] > limit :
+            result += 1 
+            q.pop()
+        else : 
+            result += 1 
+            q.pop()
+            q.popleft()
+            
+    if len(q) == 1 : 
+        result += 1
+
+    return result
