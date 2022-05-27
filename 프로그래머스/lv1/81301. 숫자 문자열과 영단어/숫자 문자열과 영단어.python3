@@ -1,9 +1,9 @@
 def solution(s):
+    answer = 0
+    word = ["zero","one","two","three","four","five","six","seven","eight","nine"]
+    for i in range(len(word)) : 
+        if word[i] in s : 
+            s = s.replace(word[i],str(i))
+    answer = int(s) 
 
-
-    numEng = ['zero','one','two','three','four','five','six','seven','eight','nine']
-
-    for i in range(len(numEng)):
-        s = s.replace(numEng[i],str(i))
-    answer = int(s)
     return answer
