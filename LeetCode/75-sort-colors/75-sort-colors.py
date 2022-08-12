@@ -14,6 +14,7 @@ class Solution:
                 b-= 1
                 nums[w],nums[b] = nums[b] ,nums[w]
                 
+                
             
             else : 
                 w += 1 
