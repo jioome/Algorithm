@@ -11,5 +11,5 @@ class Solution:
             elif nums[mid] == target : 
                 return mid
             else : 
-                left = mid + 1
+                left = mid + 1 
         return -1 
