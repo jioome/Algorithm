@@ -16,10 +16,10 @@ class Solution:
                 if self.depth < height : 
                     self.depth = height
                     self.ans = root.val
-
+                    return 
                 elif self.depth == height : 
                     self.ans += root.val
-
+                    return 
             find(root.left,height+1)
             find(root.right,height+1)
                 
