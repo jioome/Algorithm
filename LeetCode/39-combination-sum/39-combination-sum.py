@@ -1,7 +1,7 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         result = []
-        def dfs(target,idx,lst):
+        def dfs(idx,lst):
             if target == sum(lst) : 
                 
                 result.append(lst)
@@ -10,11 +10,11 @@ class Solution:
             for i in range(idx,len(candidates)):
                 
                 if sum(lst)<= target : 
-                    dfs(target,i,lst+[candidates[i]])
+                    dfs(i,lst+[candidates[i]])
                 
             
             
            
-        dfs(target,0,[])
+        dfs(0,[])
         return result
     
