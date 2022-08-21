@@ -5,18 +5,16 @@ class Solution:
         Q = [(0,k)]
         graph = defaultdict(list)
         dist = defaultdict(int)
-        for u,v,w in times:
+        for u,v,w in times : 
             graph[u].append((v,w))
-
-       
+        
         while Q : 
-            time,node = heapq.heappop(Q)
+            time , node = heapq.heappop(Q)
             if node not in dist : 
                 dist[node] = time
                 for v,w in graph[node] : 
                     heapq.heappush(Q,(w+time,v))
-        if len(dist) == n :
+
+        if len(dist) == n : 
             return max(dist.values())
         return -1 
-            
-       
