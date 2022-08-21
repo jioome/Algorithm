@@ -1,12 +1,14 @@
-from collections import * 
+import heapq
+from collections import *
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         Q = [(0,k)]
         graph = defaultdict(list)
+        dist = defaultdict(int)
         for u,v,w in times:
             graph[u].append((v,w))
 
-        dist = defaultdict(int)
+       
         while Q : 
             time,node = heapq.heappop(Q)
             if node not in dist : 
@@ -17,3 +19,4 @@ class Solution:
             return max(dist.values())
         return -1 
             
+       
