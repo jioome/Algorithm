@@ -1,20 +1,22 @@
-from collections import *
+
 class Solution:
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
-        result = [] 
-        dic = defaultdict(list)
-        for t in tickets : 
-            dic[t[0]].append(t[1])
+        graph = defaultdict(list)
+        tickets.sort()
+        for t in tickets:
+            graph[t[0]].append(t[1])
+        route = [] 
+        def dfs(start):
+
+            while graph[start] :
+                dfs(graph[start].pop(0))
+                
+            route.append(start)
+
             
-        for d in dic : 
-            dic[d].sort(reverse=True)
-        def dfs(start) : 
-            while dic[start] : 
-                next = dic[start].pop()
-                dfs(next)
-            result.append(start)
             
             
         
         dfs("JFK")
-        return result[::-1]
+
+        return route[::-1]
