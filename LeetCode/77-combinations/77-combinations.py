@@ -1,21 +1,17 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-            
-        result = []
-        
-        def dfs(idx,lst):
-            
-            if len(lst) == k:
-                result.append(lst)
-            
-            for i in range(idx+1,n+1):
-                dfs(i,lst+[i])
-                if i+k >n :
-                    continue
-                
-        for i in range(1,n+1):
-            if k == 1 : 
-                result.append([i])
-            else : 
-                dfs(i,[i])
-        return result
+        result = [] 
+        path = [] 
+        def dfs(idx,n,k):
+            if k == 0  : 
+                result.append(path[:])
+                return 
+
+            for i in range(idx,n):
+                path.append(i+1)
+                dfs(i+1,n,k-1)
+                path.pop()
+
+        dfs(0,n,k)
+
+        return result 
