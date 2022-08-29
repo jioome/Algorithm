@@ -17,13 +17,17 @@ class Solution:
                 ans+=1 
                 return counter+1, sum_+ node.val
             
-            left_counter, left_sum = rec(node.left, counter, sum_)
-            right_counter, right_sum = rec(node.right, counter, sum_)
-            sum_ = left_sum + right_sum + node.val
-            counter = left_counter + right_counter + 1
-            if sum_ // counter == node.val:
-                ans += 1
-            return counter, sum_
+            left_counter,left_sum = rec(node.left,counter,sum_)
+            right_counter,right_sum = rec(node.right,counter,sum_)
+            
+            sum_= left_sum+right_sum+node.val
+            counter = left_counter+right_counter+1
+            
+            
+            if node.val == (sum_ //counter) : 
+                ans+=1
+                
+            return counter,sum_
             
         rec(root,0,0)
         return ans
