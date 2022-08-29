@@ -9,12 +9,14 @@ class Solution:
         ans = 0
         
         def rec(node, counter, sum_):
-            nonlocal ans
-            if node is None:
-                return counter, sum_
-            if node.left is None and node.right is None:
-                ans += 1
-                return counter + 1, sum_ + node.val
+            nonlocal ans 
+            if node is None : 
+                return counter,sum_
+            
+            if not node.left and not node.right : 
+                ans+=1 
+                return counter+1, sum_+ node.val
+            
             left_counter, left_sum = rec(node.left, counter, sum_)
             right_counter, right_sum = rec(node.right, counter, sum_)
             sum_ = left_sum + right_sum + node.val
@@ -23,5 +25,5 @@ class Solution:
                 ans += 1
             return counter, sum_
             
-        rec(root, 0, 0)
+        rec(root,0,0)
         return ans
