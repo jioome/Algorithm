@@ -8,10 +8,10 @@ def solution(queue1, queue2):
     sum2 = sum(q2)
     for _ in range(len(queue1) * 3) :
         if sum1 < sum2 : 
-            num2 = q2[0]
+            num2 = q2.popleft()
             sum2 -= num2
             sum1 += num2
-            q1.append(q2.popleft())
+            q1.append(num2)
 
         elif sum1 > sum2 : 
             num1 = q1[0]
