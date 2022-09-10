@@ -1,17 +1,15 @@
-from collections import Counter    
 from itertools import combinations
+from collections import Counter
 def solution(orders, course):
-    answer = []
-    
-    for c in course :
-        lst = [] 
-        for o in orders : 
-            # map 이용 / xy , yx 조합 같게 만들기 위해 sorted 
-            lst+=list(map(''.join,(combinations(sorted(o),c))))
-        lst = Counter(lst)
-        for a,b in lst.items() : 
-            if b >=max(lst.values()) and b>=2 :
-                answer.append(a)
-            
+    sorted(orders)
+    result = [] 
+    for c in course : 
+        p = [] 
+        for order in orders : 
+            p+=list(map(''.join,combinations(sorted(order),c)))
+        cntp = Counter(p)
+        for k in cntp:
+            if cntp[k] >= 2 and cntp[k] == max(cntp.values()) : 
+                result.append(k)
 
-    return sorted(answer)
+    return sorted(result)
