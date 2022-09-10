@@ -15,7 +15,11 @@ def solution(str1, str2):
             
     ca = Counter(a)
     cb = Counter(b)
+    # 교집합 &
     inter = list((ca & cb).elements())
+    # 합집합 |
+    # elements() 카운터 숫자만큼 요소 반환 
+    
     union = list((ca | cb).elements())
     if len(union) == 0 and len(inter) == 0:
         return 65536
