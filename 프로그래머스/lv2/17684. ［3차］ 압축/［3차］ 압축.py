@@ -1,20 +1,25 @@
 def solution(msg):
-    alpha_dict = {chr(65+i) : i+1 for i in range(26)}
+    answer = []
+    cnt = 27
+    alpha = {}
+
+    for i in range(1,27):
+        alpha[chr(i+64)] = i 
+    i = 0 
+    s = ''
     
-    i = 0
-    check = ''
-    result = []
-    num = 27
-    
-    while i < len(msg) : 
-        check += msg[i]
-        if check in alpha_dict : 
-            i+=1 
+    while i< len(msg):
+        s += msg[i]
+        if s in alpha : 
+            i+= 1 
         else : 
-            alpha_dict[check] = num
-            num += 1 
-            result.append(alpha_dict[check[:-1]])
-            check = '' 
-    result.append(alpha_dict[check])
+            alpha[s] = cnt
+            cnt+=1 
+            answer.append(alpha[s[:-1]])
+            s ='' 
+    
+            
+    # 마지막 거 넣기 
+    answer.append(alpha[s])
         
-    return result
+    return answer
