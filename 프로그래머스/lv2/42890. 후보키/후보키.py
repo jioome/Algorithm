@@ -12,9 +12,10 @@ def solution(relation):
     unique = [] 
     
     for com in combi :
-        only = [] 
-        for r in relation : 
-            only+= [r[c] for c in com ]
+        # 2차원 이상 list -> set 변환 안됨
+        # tuple -> set 
+        only = [tuple([r[c] for c in com] ) for r in relation]
+        
         if len(set(only)) == row : 
             check = True 
             for x in unique :
@@ -24,7 +25,5 @@ def solution(relation):
                     break
             if check : 
                 unique.append(com)
-        
-        
         
     return len(unique)
