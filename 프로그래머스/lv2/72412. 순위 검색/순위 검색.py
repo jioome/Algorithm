@@ -33,7 +33,18 @@ def solution(info, query):
                 target = info_dict[i]
                 idx = bisect_left(target,score)
                 cnt = len(target)-idx
-            
+                # if len(target)> 0 :
+                #     start = 0
+                #     end = len(target)
+                #     while start != end and start != len(target) : 
+                #         mid = (end+start)//2
+                #         if target[mid] >= score : 
+                #             end = mid
+                #         else : 
+                #             start = mid + 1
+                #     answer.append(len(target)-start)
+                # else : 
+                #     answer.append(0)
         answer.append(cnt)
-        
+
     return answer
