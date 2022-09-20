@@ -1,8 +1,9 @@
-class Solution: 
+from bisect import bisect_left
+class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        try:
-            return nums.index(target)
-        except : 
-            return -1 
-           
-           
+
+        index = bisect_left(nums,target)
+        if target not in nums : 
+            return -1
+
+        return index
