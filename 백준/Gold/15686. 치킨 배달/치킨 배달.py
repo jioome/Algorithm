@@ -1,28 +1,31 @@
-import sys
 from itertools import combinations
 
-input = sys.stdin.readline
+n, m = map(int,input().split())
+city = [list(map(int,input().split())) for _ in range(n)]
+house = []
+chicken = [] 
+chicken_dis = []
 
-n, m = map(int, input().split())
-city = list(list(map(int, input().split())) for _ in range(n))
-result = 999999
-house = []      # 집의 좌표
-chick = []      # 치킨집의 좌표
-
+# 치킨, 집 거리 표현
 for i in range(n):
     for j in range(n):
+        if city[i][j] == 2:
+            chicken.append((i,j))
         if city[i][j] == 1:
-            house.append([i, j])
-        elif city[i][j] == 2:
-            chick.append([i, j])
+            house.append((i,j))
 
-for chi in combinations(chick, m):  # m개의 치킨집 선택
-    temp = 0            # 도시의 치킨 거리
-    for h in house: 
-        chi_len = 999   # 각 집마다 치킨 거리
-        for j in range(m):
-            chi_len = min(chi_len, abs(h[0] - chi[j][0]) + abs(h[1] - chi[j][1]))
-        temp += chi_len
-    result = min(result, temp)
+result = float('inf') 
+# 치킨집 m개 선택 경우의 수 모두 구함
+com_chicken = list(combinations(chicken,m))
 
+for com in com_chicken:
+    distance = 0  
+    # 집의 치킨 거리 구하기 
+    for i,j in house : 
+        chi_dis = float('inf')
+        for a,b in com :
+            chi_dis = min(abs(a-i) + abs(b-j),chi_dis)
+        distance+= chi_dis
+    result = min(result,distance)
+ 
 print(result)
