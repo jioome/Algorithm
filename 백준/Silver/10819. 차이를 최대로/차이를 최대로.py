@@ -28,7 +28,6 @@ def back_tracking():
 input = sys.stdin.readline
 n = int(input())
 a = list(map(int, input().split()))
-global answer
 answer = 0
 stack =[] 
 back_tracking()
