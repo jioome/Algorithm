@@ -15,12 +15,12 @@ distance = [[-1] * n for _ in range(n)]
 # 육지 가장자리(바다) x,y 좌표와 육지 번호 저장
 sea = deque([])
 
-# 육지 넘버링
+# 육지 구역마다 넘버링
 def numbering(board, number):
-    q = deque([])
+    q = deque()
     for i in range(n):
         for j in range(n):
-            if board[i][j] == 1 and not visited[i][j]:
+            if board[i][j] == 1 and visited[i][j]==0:
                 q.append((i, j))
                 visited[i][j] = True
                 board[i][j] = number
@@ -31,11 +31,11 @@ def numbering(board, number):
                     for d in range(4):
                         nr = r + dx[d]
                         nc = c + dy[d]
-                        if 0 <= nr < n and 0 <= nc < n and not visited[nr][nc]:
+                        if 0 <= nr < n and 0 <= nc < n and visited[nr][nc] == 0 :
                             # 육지라면 넘버링 계속 진행
                             if board[nr][nc] == 1:
                                 q.append((nr, nc))
-                                visited[nr][nc] = True
+                                visited[nr][nc] = 1
                                 board[nr][nc] = number  # 넘버링 진행
                                 distance[nr][nc] = 0
                             
@@ -47,6 +47,7 @@ def numbering(board, number):
                                 # ★ 다음 좌표가 아닌 현재 좌표 (r, c, number)를 저장해야함.
 
                 number += 1
+
 
 
 # 다리 놓기 
