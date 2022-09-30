@@ -21,7 +21,7 @@ def dfs(x,y,r):
         if 0 <= nx < n and 0 <= ny < n and board[nx][ny] > r and visited[nx][ny] == 0 :
             dfs(nx,ny,r)
 
-# r은 빗물의 
+# r은 빗물의 높이 
 for r in range(high):
     visited = [[0]*n for _ in range(n)]
     cnt = 0 
