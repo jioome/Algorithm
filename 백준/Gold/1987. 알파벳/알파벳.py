@@ -1,26 +1,29 @@
-r, c = map(int, input().split())
-graph = [list(input()) for _ in range(r)]
-visited = set()
-dx, dy = (-1, 1, 0, 0), (0, 0, -1, 1)
-ans = 0
+import sys
+from collections import deque
+input=sys.stdin.readline
 
-
-def dfs(x, y, cnt):
-    global ans
-
-    ans = max(ans, cnt)
-    visited.add(graph[x][y])
-
+R,C=map(int,input().split())
+arr=[list(input()) for _ in range(R)]
+check=[['']*C for _ in range(R)]
+l=[(0,0,1,arr[0][0])]
+MAX=0
+dx=[-1,0,1,0]
+dy=[0,1,0,-1]
+while l:
+    x,y,cnt,total=l.pop()
+    if MAX<cnt:
+        MAX=cnt
+    if MAX==26:
+        break
     for i in range(4):
-        nx, ny = x + dx[i], y + dy[i]
-
-        if 0 <= nx < r and 0 <= ny < c:
-            if graph[nx][ny] not in visited:
-                dfs(nx, ny, cnt + 1)
-
-    visited.remove(graph[x][y])
-
-
-dfs(0, 0, 1)
-
-print(ans)
+        nx=x+dx[i]
+        ny=y+dy[i]
+        if 0<=nx<R and 0<=ny<C:
+            if arr[nx][ny] not in total:
+                temp=total+arr[nx][ny]
+                if check[nx][ny]!=temp:
+                    check[nx][ny]=temp
+                #print(check,l)
+                    l.append((nx,ny,cnt+1,temp))
+print(MAX)
+    
