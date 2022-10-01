@@ -13,16 +13,17 @@ def dfs(x,y,cnt):
     ans = max(ans,cnt)
     dx = [-1,1,0,0]
     dy = [0,0,-1,1]
-    check.add(board[x][y])
+    
     for i in range(4):
         nx = x + dx[i]
         ny = y + dy[i]
         if 0 <= nx < r and 0 <= ny < c  : 
             if board[nx][ny] not in check:
+                check.add(board[nx][ny])
                 dfs(nx,ny,cnt+1)
-    check.remove(board[x][y])
+                check.remove(board[nx][ny])
 
         
-
+check.add(board[0][0])
 dfs(0,0,1)
 print(ans)
