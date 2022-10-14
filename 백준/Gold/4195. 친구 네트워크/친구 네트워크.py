@@ -10,8 +10,7 @@ def find(x):
         # return find(parent[x])하면 시간 초과 남 
         parent[x] = find(parent[x])
         return parent[x]
-    else : 
-        return x
+    return x
 
 # root 노드 합치기 
 def union(x,y):
