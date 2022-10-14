@@ -6,6 +6,8 @@ n = int(input())
 # root 노드 찾기
 def find(x):
     if parent[x] != x : 
+        # 여기가 중요
+        # return find(parent[x])하면 시간 초과 남 
         parent[x] = find(parent[x])
         return parent[x]
     else : 
