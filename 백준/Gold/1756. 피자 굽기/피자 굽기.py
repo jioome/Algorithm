@@ -6,7 +6,7 @@ d,n = map(int,input().split())
 oven = list(map(int,input().split()))
 # 피자 지름 
 doughs = list(map(int,input().split()))
-
+# sorting 
 for i in range(1,len(oven)):
     if oven[i]>oven[i-1]:
         oven[i] = oven[i-1]
@@ -36,9 +36,10 @@ for d in doughs:
     l = 0 
     r = pile_d-1
 
+# 불가능한 경우
 if pile_d == -1 : 
     print(0)
 else : 
-    # 반죽의 높이
+    # 마지막 반죽의 위치
     print(pile_d+1)
  
