@@ -31,7 +31,7 @@ for d in doughs:
             r = mid-1
 
     if not is_pile:
-        pile_d -= 1
+        pile_d = -1
         break
     l = 0 
     r = pile_d-1
@@ -39,6 +39,6 @@ for d in doughs:
 if pile_d == -1 : 
     print(0)
 else : 
-    # 반죽의 
+    # 반죽의 높이
     print(pile_d+1)
  
