@@ -13,7 +13,9 @@ for i in range(1,len(oven)):
 
 # 도우가 어디에 쌓이는지
 pile_d = 0 
-l = 0 
+# 위쪽
+l = 0
+# 아래쪽 
 r = len(oven)-1
 for d in doughs:
     is_pile = False
