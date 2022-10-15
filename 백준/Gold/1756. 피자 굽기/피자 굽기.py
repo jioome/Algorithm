@@ -37,5 +37,6 @@ for d in doughs:
 if pile_d == -1 : 
     print(0)
 else : 
+    # 반죽의 
     print(pile_d+1)
  
