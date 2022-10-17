@@ -1,17 +1,16 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        result = [] 
-        path = [] 
-        def dfs(idx,n,k):
-            if k == 0  : 
-                result.append(path[:])
+        result = []
+        def dfs(lst,idx,k):
+            if k == 0 : 
+                result.append(lst[:])
                 return 
-
-            for i in range(idx,n):
-                path.append(i+1)
-                dfs(i+1,n,k-1)
-                path.pop()
-
-        dfs(0,n,k)
-
-        return result 
+            for i in range(idx,n+1):
+                lst.append(i)
+                dfs(lst,i+1,k-1)
+                lst.pop()
+                
+        
+        dfs([],1,k)
+        return result
+        
