@@ -1,15 +1,16 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        result =[] 
-        pre = [] 
-        def dfs(nums):
-            if len(nums)== 0 : 
-                result.append(pre[:])
-            for n in nums : 
-                nex = nums[:]
-                nex.remove(n)
-                pre.append(n)
+        result = [] 
+        lst = [] 
+        def dfs(elements):
+            if len(elements) == 0 : 
+                return result.append(lst[:])
+            for e in elements : 
+                nex = elements[:]
+                nex.remove(e)
+                lst.append(e)
                 dfs(nex)
-                pre.pop()
-        dfs(nums)
+                lst.pop()
+        dfs(nums)        
         return result
+        
