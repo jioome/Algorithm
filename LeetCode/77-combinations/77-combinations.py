@@ -1,13 +1,17 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        result = [] 
-        def dfs(k,lst,idx):
+        answer = [] 
+        arr = [i for i in range(n+1)]
+        def dfs(idx,k,lst):
             if k == 0 : 
-                result.append(lst[:])
-                return 
+                answer.append(lst[:])
             for i in range(idx,n+1):
-                dfs(k-1,lst+[i],i+1)
-        
-        dfs(k,[],1)
-        
-        return result
+                lst.append(i)
+                dfs(i+1,k-1,lst)
+                lst.pop()
+                
+            
+            
+        dfs(1,k,[])
+        print(answer)
+        return answer
