@@ -10,6 +10,10 @@
 2. 시간 복잡도 
 eloge
 
+젤 중요한 것 / MST 인지 알아보는 법 
+1. 모든 노드가 연결되도록 한다. 
+2. 이미 연결된 노드를 최소의 비용으로 줄이기 
+
 
 """
 import sys
@@ -22,20 +26,18 @@ for i in range(e):
     edge[a].append((c,b))
     edge[b].append((c,a))
 q= []
-
+visited = [0]*(v+1)
 heapq.heappush(q,(0,1))
-chk = [0]*(v+1)
-result = 0
+result = 0 
 while q : 
-    w,node = heapq.heappop(q)
-    if chk[node] == 0  : 
-        chk[node] = 1
+    w, node = heapq.heappop(q)
+    if visited[node]== 0 : 
         result += w
-        for next_edge in edge[node]:
-            if chk[next_edge[1]] == 0:
-                heapq.heappush(q,next_edge)
+        visited[node] = 1
+        for next_node in edge[node]:
+            if visited[next_node[1]] == 0 : 
+                heapq.heappush(q,next_node)
+
+
 print(result)
-
-
-
 
