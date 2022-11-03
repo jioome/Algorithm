@@ -1,32 +1,39 @@
-import sys
-sys.setrecursionlimit(10**5)
-n = int(input())
-board = [list(map(int,input())) for _ in range(n)]
-result = []
-dx = [-1,1,0,0]
-dy = [0,0,1,-1]
-house =0
-def dfs(x,y):
-    # 한 단지마다 집의 수 
-    global house 
-    house+= 1 
-    # 값을 0으로 바꿔주면서 방문 처리 
-    board[x][y] = 0 
 
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        if 0 <= nx < n and 0 <= ny < n and board[nx][ny] == 1: 
+import sys 
+
+n = int(input())
+
+answer = [] 
+board = [list(map(int,input())) for _ in range(n)]
+    
+
+visited = [[0]*(n) for _ in range(n)]
+dx = [0,0,-1,1]
+dy = [-1,1,0,0]
+def dfs(i,j):
+    global cnt
+    cnt += 1 
+    for z in range(4):
+        nx = i + dx[z]
+        ny = j + dy[z]
+        if 0 <= nx < n and 0 <= ny < n and visited[nx][ny] == 0 and board[nx][ny] == 1:
+            visited[nx][ny]= 1 
             dfs(nx,ny)
-        
-for i in range(n): 
+    return cnt
+
+    
+
+    
+
+    
+for i in range(n):
     for j in range(n):
-        if board[i][j] == 1  : 
-            dfs(i,j)
-            result.append(house)
-            house =0
-        
-result.sort()
-print(len(result))
-for r in result : 
-    print(r)
+        if visited[i][j] == 0 and board[i][j] == 1:
+            visited[i][j] = 1 
+            cnt = 0 
+            answer.append(dfs(i,j))
+
+print(len(answer))
+answer.sort()
+for a in answer : 
+    print(a)
