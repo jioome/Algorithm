@@ -21,26 +21,24 @@ for i in range(n):
 cnt = 1
 board[r][c] = 2
 while True : 
-    check = False
+    check = False 
     for i in range(4):
-        dis = (d+3)%4
-        nx = r + dx[dis]
-        ny = c + dy[dis]
+        nx = r + dx[(d+3)%4]
+        ny = c + dy[(d+3)%4]
         d = (d+3)%4
         if 0 <= nx < n and 0 <= ny < m : 
             if board[nx][ny] == 0 : 
-                board[nx][ny] = 2
-                cnt += 1
+                cnt += 1 
+                board[nx][ny] =2 
+                r = nx
+                c= ny
                 check = True 
-                r,c= nx ,ny
                 break
     if check == False : 
-        
-        if board[r - dx[d]][c - dy[d]] ==  1 : 
+        nx = r - dx[d]
+        ny = c - dy[d]
+        r = nx
+        c = ny
+        if board[nx][ny] == 1 : 
             print(cnt)
             break
-        else : 
-            r,c = r - dx[d] ,c - dy[d]
-    
-        
-
