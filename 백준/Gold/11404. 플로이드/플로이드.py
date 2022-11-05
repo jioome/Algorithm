@@ -1,34 +1,34 @@
-# 거쳐가는 정점을 기준으로 최단 거리를 구하는 것 
-# Floyd-Warshall 알고리즘이란, 위 경우에서 마지막에 해당하는 모든 최단 경로를 구하는 방법 입니다.
 import sys
-input = sys.stdin.readline 
-n = int(input())
+input = sys.stdin.readline
+'''
+모든 도시에서 모든 도시로 가는 최소 비용 
+n3
+플로이드 
+
+'''
+n= int(input())
 m = int(input())
-graph = [[float('inf')]*(n+1) for _ in range(n+1)]
+inf = float('inf')
+dist = [[inf]*(n+1) for i in range(n+1)]
 
-for i in range(m):
+for _ in range(m):
     a,b,c = map(int,input().split())
-    if graph[a][b] > c : 
-        graph[a][b] = c
-
-# 자기 자신은 0 
-for i in range(1,n+1):
-    for j in range(1,n+1):
+    dist[a][b] = min(dist[a][b],c)
+for i in range(n+1):
+    for j in range(n+1):
         if i == j : 
-            graph[i][j] = 0 
-
-# floyd warshall 
-# x 를 반복문 마지막에 돌리니까 이상해짐
-for x in range(1,n+1):
-    for a in range(1,n+1):
-        for b in range(1,n+1):
-            graph[a][b] = min(graph[a][b],graph[a][x] + graph[x][b])
+            dist[i][j] = 0
+for k in range(1,n+1):
+    for i in range(1,n+1):
+        for j in range(1,n+1):
+            dist[i][j] = min(dist[i][j],dist[i][k]+dist[k][j])
 
 for i in range(1,n+1):
     for j in range(1,n+1):
-        if graph[i][j] == float('inf'):
+        if dist[i][j] == inf : 
             print(0,end = ' ')
-        else : 
-            print(graph[i][j],end = ' ')
-    print()
 
+        else : 
+            print(dist[i][j],end = ' ')
+        
+    print()
