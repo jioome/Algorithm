@@ -2,17 +2,12 @@ import sys
 from itertools import permutations
  # 순열로 푸는게 훨씬 쉬움 
 
-   # stack 형식 
-   # [5, 4, 3, 0, 2, 1]
-   # [5, 4, 3, 1, 0, 2]
-
 def back_tracking():
     global answer
     # stack 길이 n되면 최댓값 갱신
     if len(stack) == n : 
         sum_ = 0 
         for idx in range(1,n):
-            # 이 부분이 조금 헷갈
             sum_ += abs(a[stack[idx-1]]-a[stack[idx]])
         if answer < sum_:
             answer = sum_
@@ -28,6 +23,7 @@ def back_tracking():
 input = sys.stdin.readline
 n = int(input())
 a = list(map(int, input().split()))
+global answer
 answer = 0
 stack =[] 
 back_tracking()
