@@ -1,15 +1,18 @@
-s1 = input()
-s2 = input()
+import sys 
+input = sys.stdin.readline
 
-dp = [[0]*(len(s2)+1) for _ in range(len(s1)+1)]
+x= input()
+y = input()
 
-for i in range(1,len(s1)+1):
-    for j in range(1,len(s2)+1):
-        if s1[i-1] == s2[j-1] : 
-            dp[i][j] = dp[i-1][j-1] + 1 # 그 전 lcs + 1
-        
+dp = [[0] * (len(y)+1) for _ in range(len(x)+1)]
+
+for i in range(1, len(x)):
+    for j in range(1, len(y)):
+        if x[i-1] == y[j-1]:
+            dp[i][j] = dp[i-1][j-1] +1
         else : 
-            dp[i][j] = max(dp[i][j-1],dp[i-1][j]) #s1 마지막 문자 넣어서 lcs, s2 마지막 문자 넣어서 lcs
-print(dp[-1][-1])
+            dp[i][j] = max(dp[i-1][j] , dp[i][j-1])
+n= len(x)-1
+m =len(y)-1
 
-            
+print(dp[n][m])
